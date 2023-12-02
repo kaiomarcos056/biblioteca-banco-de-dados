@@ -1,0 +1,18 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-5">
+    <div class="shadow p-5 mb-5 rounded">
+        <form action="/alterarEditora/<%- listarEditora[0].id_editora %>" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Alterar Editora</label>
+                <input type="text" class="form-control" value="<%- listarEditora[0].nome_editora %>" placeholder="Editora" name="nome" required>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-primary" href="/editora">Voltar</a>
+                <button class="btn btn-primary" type="submit">Alterar Editora</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../includes/footer') -%>

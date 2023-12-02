@@ -1,0 +1,54 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-5">
+    <div class="shadow p-5 mb-5 rounded">
+        <form action="/cadastrarLivro" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nome Livro</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Harry Potter e a Pedra Filosofal" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Capa</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="http://capa.com.br" name="capa">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Data Lançamento</label>
+                <input type="date" class="form-control" name="data" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Categoria</label>
+                <select class="form-select" aria-label="Default select example" name="categoria">
+                    <% listaCategoria.forEach(categoria => { %>
+                        <option value="<%- categoria.id_categoria %>"><%- categoria.nome_categoria %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Autor</label>
+                <select class="form-select" aria-label="Default select example" name="autor">
+                    <% listaAutor.forEach(autor => { %>
+                        <option value="<%- autor.id_autor %>"><%- autor.nome_autor %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Editora</label>
+                <select class="form-select" aria-label="Default select example" name="editora">
+                    <% listaEditora.forEach(editora => { %>
+                        <option value="<%- editora.id_editora %>"><%- editora.nome_editora %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Quantidade</label>
+                <input type="number" class="form-control" name="quantidade" required>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-primary" href="/livro">Voltar</a>
+                <button class="btn btn-primary" type="submit">Cadastrar Livro</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../includes/footer') -%>

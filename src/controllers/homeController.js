@@ -1,3 +1,3 @@
 exports.home = (req, res) => {
-    res.render('listarCategoria');
+    res.render('index');
 };

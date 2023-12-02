@@ -1,0 +1,38 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-5">
+    <div class="shadow p-5 mb-5 rounded">
+        <form action="/cadastrarLeitor" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="João dos Santos" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Data Nascimento</label>
+                <input type="date" class="form-control" name="data" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">CPF</label>
+                <input type="text" class="form-control" name="cpf" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="email@email.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Telefone</label>
+                <input type="text" class="form-control" name="telefone" placeholder="(085)91234-5678" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Senha</label>
+                <input type="text" class="form-control" name="senha" placeholder="**********" required>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-primary" href="/leitor">Voltar</a>
+                <button class="btn btn-primary" type="submit">Cadastrar Leitor</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../includes/footer') -%>

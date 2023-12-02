@@ -10,6 +10,8 @@ app.set('view engine', 'ejs'); // SETANDO A LINGUAM DAS VIEWS
 
 app.use(routes); // USANDO AS ROTAS
 
+const {openDb} =  require('./src/DB/configDB'); // Criando arquivo .db
+openDb();
 
 app.listen(3000, () => {
     console.log('Acessar: http://localhost:3000')

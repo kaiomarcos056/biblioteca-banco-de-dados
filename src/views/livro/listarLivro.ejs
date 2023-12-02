@@ -1,0 +1,39 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-3 shadow-sm mb-4">
+    <form class="row g-3" action="/buscarLivro" method="post">
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/cadastrarLivro">Cadastrar Livro</a>
+        </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" name="nome" placeholder="Livro">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+        </div>
+    </form>
+</div>
+<div class="container-sm p-5 shadow-sm">
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Capa</th>
+            <th>Livro</th>
+            <th>Quantidade</th>
+            <th>Autor</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <% listaLivro.forEach(livro => { %>
+            <tr>
+                <td><%- livro.id_livro %></td>
+                <td><img src="<%- livro.capa %>" height="100"></td>
+                <td><%- livro.nome_livro %></td>
+                <td><%- livro.quantidade %></td>
+                <td><%- livro.nome_autor %></td>
+                <td><a href="/alterarLivro/<%- livro.id_livro %>">Editar</a></td>
+                <td><a href="/deletarLivro/<%- livro.id_livro %>">Excluir</a></td>
+            </tr>
+        <% }) %>
+    </table>
+</div>
+<%- include('../includes/footer') -%>

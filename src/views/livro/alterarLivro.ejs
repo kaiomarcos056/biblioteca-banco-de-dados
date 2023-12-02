@@ -1,0 +1,70 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-5">
+    <div class="shadow p-5 mb-5 rounded">
+        <form action="/alterarLivro/<%- listarLivro[0].id_livro %>" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nome Livro</label>
+                <input type="text" class="form-control" placeholder="Harry Potter e a Pedra Filosofal" name="nome" value="<%- listarLivro[0].nome_livro %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Capa</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="http://capa.com.br" name="capa" value="<%- listarLivro[0].capa %>">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Data Lançamento</label>
+                <input type="date" class="form-control" name="data" value="<%- listarLivro[0].data_lancamento %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Categoria</label>
+                <select class="form-select" aria-label="Default select example" name="categoria" >
+                    <% listaCategoria.forEach(categoria => { %>
+                        <% if( categoria.id_categoria == listarLivro[0].id_categoria) {%>
+                            <option value="<%- categoria.id_categoria %>" selected><%- categoria.nome_categoria %></option>
+                        <% } else { %>
+                            <option value="<%- categoria.id_categoria %>"><%- categoria.nome_categoria %></option>
+                        <% } %>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Autor</label>
+                <select class="form-select" aria-label="Default select example" name="autor">
+                    <% listaAutor.forEach(autor => { %>
+                        <% listaCategoria.forEach(categoria => { %>
+                            <% if( autor.id_autor == listarLivro[0].id_autor) {%>
+                                <option value="<%- autor.id_autor %>" selected><%- autor.nome_autor %></option>
+                            <% } else { %>
+                                <option value="<%- autor.id_autor %>"><%- autor.nome_autor %></option>
+                            <% } %>
+                        <% }) %>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Editora</label>
+                <select class="form-select" aria-label="Default select example" name="editora">
+                    <% listaEditora.forEach(editora => { %>
+                        <% listaCategoria.forEach(categoria => { %>
+                            <% if( editora.id_editora == listarLivro[0].id_editora) {%>
+                                <option value="<%- editora.id_editora %>" selected><%- editora.nome_editora %></option>
+                            <% } else { %>
+                                <option value="<%- editora.id_editora %>"><%- editora.nome_editora %></option>
+                            <% } %>
+                        <% }) %>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Quantidade</label>
+                <input type="number" class="form-control" name="quantidade" value="<%- listarLivro[0].quantidade %>" required>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-primary" href="/livro">Voltar</a>
+                <button class="btn btn-primary" type="submit">Alterar Livro</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../includes/footer') -%>

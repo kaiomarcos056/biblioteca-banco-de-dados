@@ -1,0 +1,41 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-3 shadow-sm mb-4">
+    <form class="row g-3" action="/buscarLeitor" method="post">
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/cadastrarLeitor">Cadastrar Leitor</a>
+        </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" name="nome" placeholder="Leitor">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+        </div>
+    </form>
+</div>
+<div class="container-sm p-5 shadow-sm">
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Data Nascimento</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>CPF</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <% listaLeitor.forEach(leitor => { %>
+            <tr>
+                <td><%- leitor.id_leitor %></td>
+                <td><%- leitor.nome_leitor %></td>
+                <td><%- leitor.data_nascimento %></td>
+                <td><%- leitor.email %></td>
+                <td><%- leitor.telefone %></td>
+                <td><%- leitor.cpf %></td>
+                <td><a href="/alterarLeitor/<%- leitor.id_leitor %>">Editar</a></td>
+                <td><a href="/deletarLeitor/<%- leitor.id_leitor %>">Excluir</a></td>
+            </tr>
+        <% }) %>
+    </table>
+</div>
+<%- include('../includes/footer') -%>
