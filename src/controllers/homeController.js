@@ -1,3 +1,3 @@
 exports.home = (req, res) => {
-    res.send('Iae Meu Chapa!!!');
+    res.render('listarCategoria');
 };
