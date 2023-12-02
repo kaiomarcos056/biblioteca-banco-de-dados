@@ -54,8 +54,14 @@ exports.deletarLeitor = async function(req, res){
         const listaLeitor = await leitor.listarLeitor(req.params.id);
         await leitor.deletarUsuario(listaLeitor[0].id_usuario);
         await leitor.deletarLeitor(req.params.id);
-        res.redirect('/leitor')
+        res.redirect('/buscarLeitor')
     }catch(e){
         console.log(e);
     }
+}
+
+exports.buscarLeitor = async function(req, res){
+    const leitor = new Leitor(req.body);
+    const listaLeitor = await leitor.listarLeitorNome();
+    res.render('leitor/listarLeitor', {listaLeitor});
 }

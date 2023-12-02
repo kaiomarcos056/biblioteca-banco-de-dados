@@ -1,6 +1,6 @@
 const {openDb} = require('../DB/configDB');
 
-class Leitor {
+class Administrador {
     constructor(body){
         this.body = body;
     }  
@@ -16,12 +16,12 @@ class Leitor {
         })
     }
 
-    async criarTabelaLeitor(){
+    async criarTabelaAdministrador(){
         openDb().then(db => {
-            db.exec(`CREATE TABLE IF NOT EXISTS leitor (
-                        id_leitor INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            db.exec(`CREATE TABLE IF NOT EXISTS administrador (
+                        id_administrador INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                         id_usuario INTEGER,
-                        nome_leitor VARCHAR(255),
+                        nome_administrador VARCHAR(255),
                         data_nascimento DATE,
                         email VARCHAR(255),
                         telefone VARCHAR(255),
@@ -34,29 +34,29 @@ class Leitor {
     async inserirLogin() {
         const db = await openDb();
         const result = await db.run(
-            `INSERT INTO usuario(user, senha, nivel) VALUES (?, ?, 'L')`,
+            `INSERT INTO usuario(user, senha, nivel) VALUES (?, ?, 'A')`,
             [this.body.email, this.body.senha]
         );
         return result.lastID;
     }
 
-    async inserirLeitor(id){
+    async inserirAdministrador(id){
         openDb().then(db => {
-            db.run(`INSERT INTO leitor(nome_leitor,data_nascimento,email,telefone,cpf,id_usuario) VALUES(?,?,?,?,?,?)`, 
+            db.run(`INSERT INTO administrador(nome_administrador,data_nascimento,email,telefone,cpf,id_usuario) VALUES(?,?,?,?,?,?)`, 
                     [this.body.nome,this.body.data,this.body.email,this.body.telefone,this.body.cpf,id]
                     )
         });
     }
 
-    async alterarLeitor(id){
+    async alterarAdministrador(id){
         openDb().then(db => {
-            db.run(`UPDATE leitor 
-                    SET nome_leitor = ?, 
+            db.run(`UPDATE administrador
+                    SET nome_administrador = ?, 
                         data_nascimento = ?, 
                         email = ?, 
                         telefone = ?, 
                         cpf = ?
-                    WHERE id_leitor = ?`, [this.body.nome, this.body.data, this.body.email,this.body.telefone,this.body.cpf,id])
+                    WHERE id_administrador = ?`, [this.body.nome, this.body.data, this.body.email,this.body.telefone,this.body.cpf,id])
         });
     }
 
@@ -69,9 +69,9 @@ class Leitor {
         });
     }
 
-    async deletarLeitor(id){
+    async deletarAdministrador(id){
         openDb().then(db => {
-            db.run('DELETE FROM leitor WHERE id_leitor = ?', [id])
+            db.run('DELETE FROM administrador WHERE id_administrador = ?', [id])
         });
     }
 
@@ -81,30 +81,30 @@ class Leitor {
         });
     }
 
-    async listarLeitores(){
+    async listarAdministradores(){
         return openDb().then(db => {
-            return db.all(`SELECT * FROM leitor`, [], (err, rows) => {
-               if (err) return console.error('Erro ao listar leitores: ',err.message);
+            return db.all(`SELECT * FROM administrador`, [], (err, rows) => {
+               if (err) return console.error('Erro ao listar administrador: ',err.message);
            })
        })
     }
 
-    async listarLeitor(id){
+    async listarAdministrador(id){
         return openDb().then(db => {
-            return db.all(`SELECT * FROM leitor
-                           INNER JOIN usuario ON usuario.id_usuario = leitor.id_usuario
-                           WHERE leitor.id_leitor = ?`, [id], (err, rows) => {
-               if (err) return console.error('Erro ao listar usuario: ',err.message);
+            return db.all(`SELECT * FROM administrador
+                           INNER JOIN usuario ON usuario.id_usuario = administrador.id_usuario
+                           WHERE administrador.id_administrador = ?`, [id], (err, rows) => {
+               if (err) return console.error('Erro ao listar administradores: ',err.message);
            })
        })
     }
 
-    async listarLeitorNome(){
+    async listarAdministradorNome(){
         return openDb().then(db => {
-            return db.all(`SELECT * FROM leitor 
-                           INNER JOIN usuario ON usuario.id_usuario = leitor.id_usuario
-                           WHERE UPPER(nome_leitor) LIKE ?`, ['%'+this.body.nome+'%'], (err, rows) => {
-                if (err) return console.error('Erro ao listar leitores: ',err.message);
+            return db.all(`SELECT * FROM administrador 
+                           INNER JOIN usuario ON usuario.id_usuario = administrador.id_usuario
+                           WHERE UPPER(nome_administrador) LIKE ?`, ['%'+this.body.nome+'%'], (err, rows) => {
+                if (err) return console.error('Erro ao listar administrador: ',err.message);
                 rows.forEach(row => {
                     return console.log(row);
                 });
@@ -114,4 +114,4 @@ class Leitor {
 
 }
 
-module.exports = Leitor;
+module.exports = Administrador;

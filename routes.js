@@ -7,7 +7,8 @@ const categoriaController = require('./src/controllers/categoriaContoller');
 const autorController = require('./src/controllers/autorController');
 const editoraController = require('./src/controllers/editoraController');
 const livroController = require('./src/controllers/livroController');
-const leitorController = require('./src/controllers/leitorController')
+const leitorController = require('./src/controllers/leitorController');
+const administradorController = require('./src/controllers/administradorController');
 
 // ROTA HOME
 route.get('/', homeController.home);
@@ -48,13 +49,24 @@ route.post('/alterarLivro/:id', livroController.alterarLivro);
 route.get('/deletarLivro/:id', livroController.deletarLivro);
 route.post('/buscarLivro', livroController.buscarLivro);
 
-// ROTA LEIOR
+// ROTA LEITOR
 route.get('/leitor', leitorController.indexLeitor);
 route.get('/cadastrarLeitor', leitorController.indexCadastraLeitor);
 route.post('/cadastrarLeitor', leitorController.cadastrarLeitor);
 route.get('/alterarLeitor/:id', leitorController.indexAlterarLeitor);
 route.post('/alterarLeitor/:id', leitorController.alterarLeitor);
 route.get('/deletarLeitor/:id', leitorController.deletarLeitor);
-//route.post('/buscarLivro', livroController.buscarLivro);
+route.get('/buscarLeitor', leitorController.buscarLeitor);
+route.post('/buscarLeitor', leitorController.buscarLeitor);
+
+// ROTA ADMINISTRADOR
+route.get('/administrador', administradorController.indexAdministrador);
+route.get('/cadastrarAdministrador', administradorController.indexCadastraAdministrador);
+route.post('/cadastrarAdministrador', administradorController.cadastrarAdministrador);
+route.get('/alterarAdministrador/:id', administradorController.indexAlterarAdministrador);
+route.post('/alterarAdministrador/:id', administradorController.alterarAdministrador);
+route.get('/deletarAdministrador/:id', administradorController.deletarAdministrador);
+route.get('/buscarAdministrador', administradorController.buscarAdministrador);
+route.post('/buscarAdministrador', administradorController.buscarAdministrador);
 
 module.exports = route; // EXPORTANDO O ROUTES

@@ -1,0 +1,41 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-3 shadow-sm mb-4">
+    <form class="row g-3" action="/buscarAdministrador" method="post">
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/cadastrarAdministrador">Cadastrar Administrador</a>
+        </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" name="nome" placeholder="Administrador">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+        </div>
+    </form>
+</div>
+<div class="container-sm p-5 shadow-sm">
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Data Nascimento</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>CPF</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <% listaAdministrador.forEach(administrador => { %>
+            <tr>
+                <td><%- administrador.id_administrador %></td>
+                <td><%- administrador.nome_administrador %></td>
+                <td><%- administrador.data_nascimento %></td>
+                <td><%- administrador.email %></td>
+                <td><%- administrador.telefone %></td>
+                <td><%- administrador.cpf %></td>
+                <td><a href="/alterarAdministrador/<%- administrador.id_administrador %>">Editar</a></td>
+                <td><a href="/deletarAdministrador/<%- administrador.id_administrador %>">Excluir</a></td>
+            </tr>
+        <% }) %>
+    </table>
+</div>
+<%- include('../includes/footer') -%>
