@@ -1,0 +1,36 @@
+<%- include('../includes/header') -%>
+<%- include('../includes/navbar') -%>
+<div class="container-sm p-3 shadow-sm mb-4">
+    <form class="row g-3" action="/buscarHistorico" method="post">
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/alugarLivro">Alugar Livro</a>
+        </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" name="nome" placeholder="Livro">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+        </div>
+    </form>
+</div>
+<div class="container-sm p-5 shadow-sm">
+    <table class="table table-hover">
+        <tr>
+            <th>Capa</th>
+            <th>Livro</th>
+            <th>Leitor</th>
+            <th>Dt Emprestimo</th>
+            <th>Dt Devolução</th>
+        </tr>
+        <% listaEmprestimo.forEach(emprestimo => { %>
+            <tr>
+                <td><img src="<%- emprestimo.capa %>" height="100"></td>
+                <td><%- emprestimo.nome_livro %></td>
+                <td><%- emprestimo.nome_leitor %></td>
+                <td><%- emprestimo.data_emprestimo %></td>
+                <td><%- emprestimo.data_devolucao %></td>
+            </tr>
+        <% }) %>
+    </table>
+</div>
+<%- include('../includes/footer') -%>

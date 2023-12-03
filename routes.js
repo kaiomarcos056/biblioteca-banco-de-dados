@@ -9,6 +9,7 @@ const editoraController = require('./src/controllers/editoraController');
 const livroController = require('./src/controllers/livroController');
 const leitorController = require('./src/controllers/leitorController');
 const administradorController = require('./src/controllers/administradorController');
+const emprestimoController = require('./src/controllers/emprestimo.Controller');
 
 // ROTA HOME
 route.get('/', homeController.home);
@@ -68,5 +69,16 @@ route.post('/alterarAdministrador/:id', administradorController.alterarAdministr
 route.get('/deletarAdministrador/:id', administradorController.deletarAdministrador);
 route.get('/buscarAdministrador', administradorController.buscarAdministrador);
 route.post('/buscarAdministrador', administradorController.buscarAdministrador);
+
+// ROTA ADMINISTRADOR
+route.get('/emprestimo', emprestimoController.indexEmprestimo);
+route.get('/alugarLivro', emprestimoController.indexAlugarLivro);
+route.get('/alugarLivro/:id', emprestimoController.alugarLivro);
+route.post('/alugarLivro/:id', emprestimoController.cadastraAlugaLivro);
+route.get('/alterarEmprestimo/:id', emprestimoController.indexAlterarEmprestimo)
+route.post('/alterarEmprestimo/:id', emprestimoController.alterarEmprestimo)
+route.get('/devolverLivro/:id', emprestimoController.devolverLivro);
+route.post('/buscarLivroEmprestimo', emprestimoController.buscarLivro);
+route.get('/historicoEmprestimo', emprestimoController.indexHistorico);
 
 module.exports = route; // EXPORTANDO O ROUTES
