@@ -1,18 +1,18 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-5">
-    <div class="shadow p-5 mb-5 rounded">
-        <form action="/cadastrarCategoria" method="POST">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Cadastrar Categoria</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Categoria" name="nome" required>
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-primary" href="/categoria">Voltar</a>
-                <button class="btn btn-primary" type="submit">Cadastrar Categoria</button>
-            </div>
-        </form>
-    </div>
+<div class="container-sm p-5 mt-5 shadow-sm">
+    <p class="fw-bold fs-2 mb-4">Nova Categoria</p>
+    <form action="/cadastrarCategoria" method="POST" class="mt-5">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nome Categoria</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Categoria" name="nome" required>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-warning" href="/categoria">Voltar</a>
+            <button class="btn btn-success" type="submit">Cadastrar Categoria</button>
+        </div>
+    </form>
+    
 </div>
 
 <%- include('../includes/footer') -%>
