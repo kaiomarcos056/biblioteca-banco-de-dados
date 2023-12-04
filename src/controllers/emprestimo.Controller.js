@@ -7,6 +7,7 @@ exports.indexEmprestimo = async (req,res) => {
     try{
         const emprestimo = new Emprestimo(req.body);
         await emprestimo.criarTabelaEmprestimo();
+        await emprestimo.criarTabelaHistorico();
         const listaEmprestimo = await emprestimo.listarEmprestimos();
         res.render('emprestimo/listarEmprestimo', {listaEmprestimo});
     }catch(e){
@@ -52,7 +53,11 @@ exports.cadastraAlugaLivro = async(req, res) => {
 exports.indexAlterarEmprestimo = async(req, res) =>{
     try{
         const emprestimo = new Emprestimo(req.body);
-        const listaEmprestimo = await emprestimo.listarEmprestimo(req.params.id);
+
+        const idLivro = req.params.idLivro;
+        const idLeitor = req.params.idLeitor;
+
+        const listaEmprestimo = await emprestimo.listarEmprestimo(idLivro, idLeitor);
         res.render('emprestimo/alterarEmprestimo', { listaEmprestimo })
     }catch(e) {
         console.log(e);
@@ -62,7 +67,11 @@ exports.indexAlterarEmprestimo = async(req, res) =>{
 exports.alterarEmprestimo = async(req, res) =>{
     try{
         const emprestimo = new Emprestimo(req.body);
-        await emprestimo.alterarEmprestimo(req.params.id);
+
+        const idLivro = req.params.idLivro;
+        const idLeitor = req.params.idLeitor;
+
+        await emprestimo.alterarEmprestimo(idLivro, idLeitor);
         return res.redirect('/emprestimo')
     }catch(e) {
         console.log(e);
@@ -72,9 +81,26 @@ exports.alterarEmprestimo = async(req, res) =>{
 exports.devolverLivro = async(req, res) =>{
     try{
         const emprestimo = new Emprestimo(req.body);
-        await emprestimo.alterarStatusEmprestimo(req.params.id);
-        return res.redirect('/emprestimo')
+
+        const idLivro = req.params.idLivro;
+        const idLeitor = req.params.idLeitor;
+        
+        const listaEmprestimo = await emprestimo.listarEmprestimo(idLivro,idLeitor);
+        await emprestimo.inserirHistorico(listaEmprestimo[0]);
+        await emprestimo.deletarEmprestimo(idLivro, idLeitor);
+       
+        return res.redirect('/listarEmprestimo')
     }catch(e) {
+        console.log(e);
+    }
+};
+
+exports.listEmprestimo = async (req,res) => {
+    try{
+        const emprestimo = new Emprestimo(req.body);
+        const listaEmprestimo = await emprestimo.listarEmprestimos();
+        res.render('emprestimo/listarEmprestimo', {listaEmprestimo});
+    }catch(e){
         console.log(e);
     }
 };
@@ -92,9 +118,19 @@ exports.buscarLivro = async(req, res) =>{
 exports.indexHistorico = async(req, res) =>{
     try{
         const emprestimo = new Emprestimo(req.body);
-        const listaEmprestimo = await emprestimo.listarHistorico();
+        const listaEmprestimo = await emprestimo.listarHistoricos();
         res.render('emprestimo/historicoEmprestimo', {listaEmprestimo});
     }catch(e){
         console.log(e);
     }
 };
+
+exports.buscarHistorico = async(req, res) => {
+    try{
+        const emprestimo = new Emprestimo(req.body);
+        const listaEmprestimo = await emprestimo.listarHistorico();
+        res.render('emprestimo/historicoEmprestimo', {listaEmprestimo});
+    }catch{
+        res.send(e)
+    }
+}

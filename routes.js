@@ -70,15 +70,18 @@ route.get('/deletarAdministrador/:id', administradorController.deletarAdministra
 route.get('/buscarAdministrador', administradorController.buscarAdministradorGET);
 route.post('/buscarAdministrador', administradorController.buscarAdministrador);
 
-// ROTA ADMINISTRADOR
+// ROTA EMPRESTIMO
 route.get('/emprestimo', emprestimoController.indexEmprestimo);
 route.get('/alugarLivro', emprestimoController.indexAlugarLivro);
 route.get('/alugarLivro/:id', emprestimoController.alugarLivro);
 route.post('/alugarLivro/:id', emprestimoController.cadastraAlugaLivro);
-route.get('/alterarEmprestimo/:id', emprestimoController.indexAlterarEmprestimo)
-route.post('/alterarEmprestimo/:id', emprestimoController.alterarEmprestimo)
-route.get('/devolverLivro/:id', emprestimoController.devolverLivro);
+route.get('/alterarEmprestimo/:idLivro/:idLeitor', emprestimoController.indexAlterarEmprestimo)
+route.post('/alterarEmprestimo/:idLivro/:idLeitor', emprestimoController.alterarEmprestimo)
+route.get('/devolverLivro/:idLivro/:idLeitor', emprestimoController.devolverLivro);
 route.post('/buscarLivroEmprestimo', emprestimoController.buscarLivro);
 route.get('/historicoEmprestimo', emprestimoController.indexHistorico);
+route.get('/listarEmprestimo', emprestimoController.listEmprestimo);
+
+route.post('/buscarHistorico', emprestimoController.buscarHistorico);
 
 module.exports = route; // EXPORTANDO O ROUTES

@@ -2,16 +2,15 @@
 <%- include('../includes/navbar') -%>
 <div class="container-sm p-5 mt-5 shadow-sm">
     <p class="fw-bold fs-2 mb-4">Alterar Emprestimo</p>
-        <form action="/alterarEmprestimo/<%- listaEmprestimo[0].id_emprestimo %>" method="POST">
+        <form action="/alterarEmprestimo/<%- listaEmprestimo[0].id_livro %>/<%- listaEmprestimo[0].id_leitor %>" method="POST">
         <div class="row align-items-center">
             <div class="col">
-                <div class="mb-3">
-                    <img src="<%- listaEmprestimo[0].capa %>" class="img-thumbnail" alt="">
-                </div>
+                <div class="mb-3"> <img src="<%- listaEmprestimo[0].capa %>" class="img-thumbnail" alt=""> </div>
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <input type="hidden" class="form-control" name="livro" value="<%- listaEmprestimo[0].id_emprestimo %>" >
+                    <input type="text" class="form-control" name="livro" value="<%- listaEmprestimo[0].id_livro %>" >
+                    <input type="text" class="form-control" name="leitor" value="<%- listaEmprestimo[0].id_leitor %>" >
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nome Livro</label>
