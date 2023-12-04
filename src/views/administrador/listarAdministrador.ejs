@@ -1,11 +1,11 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-3 shadow-sm mb-4">
-    <form class="row g-3" action="/buscarAdministrador" method="post">
-        <div class="col-auto">
-            <a class="btn btn-primary" href="/cadastrarAdministrador">Cadastrar Administrador</a>
+<div class="container-sm p-3 shadow-sm mb-4 mt-5">
+    <form class="row m-2" action="/buscarAdministrador" method="post">
+        <div class="col-3">
+            <a class="btn btn-success" href="/cadastrarAdministrador">Cadastrar Administrador</a>
         </div>
-        <div class="col-auto">
+        <div class="col-5 offset-md-3">
           <input type="text" class="form-control" name="nome" placeholder="Administrador">
         </div>
         <div class="col-auto">
@@ -32,8 +32,8 @@
                 <td><%- administrador.email %></td>
                 <td><%- administrador.telefone %></td>
                 <td><%- administrador.cpf %></td>
-                <td><a href="/alterarAdministrador/<%- administrador.id_administrador %>">Editar</a></td>
-                <td><a href="/deletarAdministrador/<%- administrador.id_administrador %>">Excluir</a></td>
+                <td><a href="/alterarAdministrador/<%- administrador.id_administrador %> " class="btn btn-warning">Editar</a></td>
+                <td><a href="/deletarAdministrador/<%- administrador.id_administrador %> " class="btn btn-danger">Excluir</a></td>
             </tr>
         <% }) %>
     </table>

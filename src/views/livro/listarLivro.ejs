@@ -1,11 +1,11 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-3 shadow-sm mb-4">
-    <form class="row g-3" action="/buscarLivro" method="post">
-        <div class="col-auto">
-            <a class="btn btn-primary" href="/cadastrarLivro">Cadastrar Livro</a>
+<div class="container-sm p-3 shadow-sm mb-4 mt-5">
+    <form class="row m-2" action="/buscarLivro" method="post">
+        <div class="col-2">
+            <a class="btn btn-success" href="/cadastrarLivro">Cadastrar Livro</a>
         </div>
-        <div class="col-auto">
+        <div class="col-5 offset-md-4">
           <input type="text" class="form-control" name="nome" placeholder="Livro">
         </div>
         <div class="col-auto">
@@ -30,8 +30,8 @@
                 <td><%- livro.nome_livro %></td>
                 <td><%- livro.quantidade %></td>
                 <td><%- livro.nome_autor %></td>
-                <td><a href="/alterarLivro/<%- livro.id_livro %>">Editar</a></td>
-                <td><a href="/deletarLivro/<%- livro.id_livro %>">Excluir</a></td>
+                <td><a href="/alterarLivro/<%- livro.id_livro %>" class="btn btn-warning">Editar</a></td>
+                <td><a href="/deletarLivro/<%- livro.id_livro %>" class="btn btn-danger">Excluir</a></td>
             </tr>
         <% }) %>
     </table>

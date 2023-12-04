@@ -1,7 +1,7 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-5">
-    <div class="shadow p-5 mb-5 rounded">
+<div class="container-sm p-5 mt-5 shadow-sm">
+    <p class="fw-bold fs-2 mb-4">Alterar Leitor</p>
         <form action="/alterarLeitor/<%- listarLeitor[0].id_leitor %>" method="POST">
             <div class="mb-3">
                 <input type="hidden" class="form-control" placeholder="João dos Santos" name="usuario" value="<%- listarLeitor[0].id_usuario %>" required>
@@ -31,11 +31,10 @@
                 <input type="text" class="form-control" name="senha" placeholder="**********" value="<%- listarLeitor[0].senha %>" required>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-primary" href="/leitor">Voltar</a>
-                <button class="btn btn-primary" type="submit">Alterar Leitor</button>
+                <a class="btn btn-warning" href="/leitor">Voltar</a>
+                <button class="btn btn-success" type="submit">Alterar Leitor</button>
             </div>
         </form>
-    </div>
 </div>
 
 <%- include('../includes/footer') -%>

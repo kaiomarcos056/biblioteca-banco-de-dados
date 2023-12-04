@@ -1,18 +1,17 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-5">
-    <div class="shadow p-5 mb-5 rounded">
+<div class="container-sm p-5 mt-5 shadow-sm">
+    <p class="fw-bold fs-2 mb-4">Alterar Autor</p>
         <form action="/alterarAutor/<%- listarAutor[0].id_autor %>" method="POST">
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Alterar Autor</label>
+                <label for="exampleFormControlInput1" class="form-label">Nome Autor</label>
                 <input type="text" class="form-control" value="<%- listarAutor[0].nome_autor %>" placeholder="Autor" name="nome" required>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-primary" href="/autor">Voltar</a>
-                <button class="btn btn-primary" type="submit">Alterar Autor</button>
+                <a class="btn btn-warning" href="/autor">Voltar</a>
+                <button class="btn btn-success" type="submit">Alterar Autor</button>
             </div>
         </form>
-    </div>
 </div>
 
 <%- include('../includes/footer') -%>

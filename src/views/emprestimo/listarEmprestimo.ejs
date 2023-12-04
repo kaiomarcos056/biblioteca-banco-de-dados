@@ -1,11 +1,11 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-3 shadow-sm mb-4">
-    <form class="row g-3" action="/buscarEmprestimo" method="post">
-        <div class="col-auto">
-            <a class="btn btn-primary" href="/alugarLivro">Alugar Livro</a>
+<div class="container-sm p-3 shadow-sm mb-4 mt-5">
+    <form class="row m-2" action="/buscarEmprestimo" method="post">
+        <div class="col-2">
+            <a class="btn btn-success" href="/alugarLivro">Alugar Livro</a>
         </div>
-        <div class="col-auto">
+        <div class="col-5 offset-md-4">
           <input type="text" class="form-control" name="nome" placeholder="Livro">
         </div>
         <div class="col-auto">
@@ -30,8 +30,8 @@
                 <td><%- emprestimo.nome_leitor %></td>
                 <td><%- emprestimo.data_emprestimo %></td>
                 <td><%- emprestimo.data_devolucao %></td>
-                <td><a href="/alterarEmprestimo/<%- emprestimo.id_emprestimo %>">Editar</a></td>
-                <td><a href="/devolverLivro/<%- emprestimo.id_emprestimo %>">Devolver</a></td>
+                <td><a href="/alterarEmprestimo/<%- emprestimo.id_emprestimo %>" class="btn btn-warning">Editar</a></td>
+                <td><a href="/devolverLivro/<%- emprestimo.id_emprestimo %>" class="btn btn-danger">Devolver</a></td>
             </tr>
         <% }) %>
     </table>

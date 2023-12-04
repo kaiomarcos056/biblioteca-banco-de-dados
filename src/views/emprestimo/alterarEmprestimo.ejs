@@ -1,7 +1,7 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-5">
-    <div class="shadow p-5 mb-5 rounded">
+<div class="container-sm p-5 mt-5 shadow-sm">
+    <p class="fw-bold fs-2 mb-4">Alterar Emprestimo</p>
         <form action="/alterarEmprestimo/<%- listaEmprestimo[0].id_emprestimo %>" method="POST">
         <div class="row align-items-center">
             <div class="col">
@@ -50,13 +50,12 @@
                     <input type="date" class="form-control" name="dataDev" value="<%- listaEmprestimo[0].data_devolucao %>" required>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-primary" href="/emprestimo">Voltar</a>
-                    <button class="btn btn-primary" type="submit">Extender Tempo</button>
+                    <a class="btn btn-warning" href="/emprestimo">Voltar</a>
+                    <button class="btn btn-success" type="submit">Extender Tempo</button>
                 </div>
             </div>
         </div>
         </form>
-    </div>
 </div>
 
 <%- include('../includes/footer') -%>

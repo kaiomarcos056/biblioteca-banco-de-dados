@@ -1,7 +1,7 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-5">
-    <div class="shadow p-5 mb-5 rounded">
+<div class="container-sm p-5 mt-5 shadow-sm">
+    <p class="fw-bold fs-2 mb-4">Novo Livro</p>
         <form action="/cadastrarLivro" method="POST">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nome Livro</label>
@@ -44,11 +44,10 @@
                 <input type="number" class="form-control" name="quantidade" required>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-primary" href="/livro">Voltar</a>
-                <button class="btn btn-primary" type="submit">Cadastrar Livro</button>
+                <a class="btn btn-warning" href="/livro">Voltar</a>
+                <button class="btn btn-success" type="submit">Cadastrar Livro</button>
             </div>
         </form>
-    </div>
 </div>
 
 <%- include('../includes/footer') -%>

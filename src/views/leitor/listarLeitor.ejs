@@ -1,11 +1,11 @@
 <%- include('../includes/header') -%>
 <%- include('../includes/navbar') -%>
-<div class="container-sm p-3 shadow-sm mb-4">
-    <form class="row g-3" action="/buscarLeitor" method="post">
-        <div class="col-auto">
-            <a class="btn btn-primary" href="/cadastrarLeitor">Cadastrar Leitor</a>
+<div class="container-sm p-3 shadow-sm mb-4 mt-5">
+    <form class="row m-2" action="/buscarLeitor" method="post">
+        <div class="col-2">
+            <a class="btn btn-success" href="/cadastrarLeitor">Cadastrar Leitor</a>
         </div>
-        <div class="col-auto">
+        <div class="col-5 offset-md-4">
           <input type="text" class="form-control" name="nome" placeholder="Leitor">
         </div>
         <div class="col-auto">
@@ -32,8 +32,8 @@
                 <td><%- leitor.email %></td>
                 <td><%- leitor.telefone %></td>
                 <td><%- leitor.cpf %></td>
-                <td><a href="/alterarLeitor/<%- leitor.id_leitor %>">Editar</a></td>
-                <td><a href="/deletarLeitor/<%- leitor.id_leitor %>">Excluir</a></td>
+                <td><a href="/alterarLeitor/<%- leitor.id_leitor %>" class="btn btn-warning">Editar</a></td>
+                <td><a href="/deletarLeitor/<%- leitor.id_leitor %>" class="btn btn-danger">Excluir</a></td>
             </tr>
         <% }) %>
     </table>
