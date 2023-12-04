@@ -112,6 +112,16 @@ class Leitor {
        })
     }
 
+
+    async deleteLeitor(id){
+        try{
+            const listaLeitor = await this.listarLeitor(id);
+            await this.deletarUsuario(listaLeitor[0].id_usuario);
+            await this.deletarLeitor(id);
+        }catch(e){
+            console.log(e)
+        }
+    }
 }
 
 module.exports = Leitor;

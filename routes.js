@@ -57,7 +57,7 @@ route.post('/cadastrarLeitor', leitorController.cadastrarLeitor);
 route.get('/alterarLeitor/:id', leitorController.indexAlterarLeitor);
 route.post('/alterarLeitor/:id', leitorController.alterarLeitor);
 route.get('/deletarLeitor/:id', leitorController.deletarLeitor);
-route.get('/buscarLeitor', leitorController.buscarLeitor);
+route.get('/buscarLeitor', leitorController.buscarLeitorGET);
 route.post('/buscarLeitor', leitorController.buscarLeitor);
 
 // ROTA ADMINISTRADOR
@@ -67,7 +67,7 @@ route.post('/cadastrarAdministrador', administradorController.cadastrarAdministr
 route.get('/alterarAdministrador/:id', administradorController.indexAlterarAdministrador);
 route.post('/alterarAdministrador/:id', administradorController.alterarAdministrador);
 route.get('/deletarAdministrador/:id', administradorController.deletarAdministrador);
-route.get('/buscarAdministrador', administradorController.buscarAdministrador);
+route.get('/buscarAdministrador', administradorController.buscarAdministradorGET);
 route.post('/buscarAdministrador', administradorController.buscarAdministrador);
 
 // ROTA ADMINISTRADOR

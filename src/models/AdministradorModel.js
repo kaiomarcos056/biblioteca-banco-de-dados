@@ -112,6 +112,15 @@ class Administrador {
        })
     }
 
+    async deleteAdministrador(id){
+        try{
+            const listaAdministrador = await this.listarAdministrador(id);
+            await this.deletarUsuario(listaAdministrador[0].id_usuario);
+            await this.deletarAdministrador(id);
+        }catch(e){
+            console.log(e);
+        }
+    }
 }
 
 module.exports = Administrador;

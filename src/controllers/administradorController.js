@@ -51,13 +51,18 @@ exports.alterarAdministrador = async function(req, res){
 exports.deletarAdministrador = async function(req, res){
     try{
         const administrador = new Administrador(req.body);
-        const listaLeitor = await administrador.listarAdministrador(req.params.id);
-        await administrador.deletarUsuario(listaLeitor[0].id_usuario);
-        await administrador.deletarAdministrador(req.params.id);
-        res.redirect('/buscarAdministrador')
+        const del = await administrador.deleteAdministrador(req.params.id)
+        const listaAdministrador = await administrador.listarAdministradores();
+        return res.redirect('/buscarAdministrador');
     }catch(e){
         console.log(e);
     }
+}
+
+exports.buscarAdministradorGET = async function(req, res){
+    const administrador = new Administrador(req.body);
+    const listaAdministrador = await administrador.listarAdministradores();
+    res.render('administrador/listarAdministrador', {listaAdministrador});
 }
 
 exports.buscarAdministrador = async function(req, res){

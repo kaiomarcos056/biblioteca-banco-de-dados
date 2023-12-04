@@ -51,13 +51,17 @@ exports.alterarLeitor = async function(req, res){
 exports.deletarLeitor = async function(req, res){
     try{
         const leitor = new Leitor(req.body);
-        const listaLeitor = await leitor.listarLeitor(req.params.id);
-        await leitor.deletarUsuario(listaLeitor[0].id_usuario);
-        await leitor.deletarLeitor(req.params.id);
-        res.redirect('/buscarLeitor')
+        await leitor.deleteLeitor(req.params.id)
+        return res.redirect('/buscarLeitor')
     }catch(e){
         console.log(e);
     }
+}
+
+exports.buscarLeitorGET = async function(req, res){
+    const leitor = new Leitor(req.body);
+    const listaLeitor = await leitor.listarLeitores();
+    res.render('leitor/listarLeitor', {listaLeitor});
 }
 
 exports.buscarLeitor = async function(req, res){
